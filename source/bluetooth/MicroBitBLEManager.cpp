@@ -151,6 +151,7 @@ static void microbit_ble_evt_handler(ble_evt_t const * p_ble_evt, void * p_conte
 
 static void microbit_dfu_init(void);
 
+static void microbit_ble_configureAdvertising(bool connectable, bool discoverable, bool whitelist, uint16_t interval_ms, int timeout_seconds, ble_advdata_t *p_advdata);
 static void microbit_ble_configureAdvertising( bool connectable, bool discoverable, bool whitelist, uint16_t interval_ms, int timeout_seconds);
 
 #if CONFIG_ENABLED(MICROBIT_BLE_EDDYSTONE_URL) || CONFIG_ENABLED(MICROBIT_BLE_EDDYSTONE_UID)
@@ -1108,6 +1109,23 @@ void MicroBitBLEManager::servicesChanged()
         }
         MICROBIT_DEBUG_DMESG("pm_local_database_has_changed complete after %dms", (int) (system_timer_current_time() - now));
     }
+}
+
+/**
+ * @brief Configure advertisement.
+ * 
+ * @param connectable Choose connectable advertising events.
+ * @param discoverable Choose LE General Discoverable Mode.
+ * @param whitelist Filter scan and connect requests with whitelist.
+ * @param interval_ms Advertising interval in milliseconds.
+ * @param timeout_seconds Advertising timeout in seconds.
+ * @param p_advdata  Data to advertise.
+ */
+void MicroBitBLEManager::configureAdvertising(bool connectable, bool discoverable, bool whitelist,
+                                              uint16_t interval_ms, int timeout_seconds,
+                                              ble_advdata_t *p_advdata)
+{
+    microbit_ble_configureAdvertising(connectable, discoverable, whitelist, interval_ms, timeout_seconds, p_advdata);
 }
 
 
