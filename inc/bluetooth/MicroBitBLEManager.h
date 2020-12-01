@@ -34,6 +34,8 @@ DEALINGS IN THE SOFTWARE.
 #error "Please define SOFTDEVICE_PRESENT as 1"
 #endif
 
+#include "ble_advdata.h"
+
 #include "MicroBitBLETypes.h"
 #include "MicroBitStorage.h"
 #include "MicroBitDisplay.h"
@@ -280,7 +282,19 @@ class MicroBitBLEManager : public CodalComponent
     * Ensure service changed indication pending for all peers
     */
     void servicesChanged();
-      
+
+    /**
+     * @brief Configure advertisement.
+     * 
+     * @param connectable Choose connectable advertising events.
+     * @param discoverable Choose LE General Discoverable Mode.
+     * @param whitelist Filter scan and connect requests with whitelist.
+     * @param interval_ms Advertising interval in milliseconds.
+     * @param timeout_seconds Advertising timeout in seconds.
+     * @param p_advdata  Data to advertise.
+     */
+    void configureAdvertising(bool connectable, bool discoverable, bool whitelist, uint16_t interval_ms, int timeout_seconds, ble_advdata_t *p_advdata);
+
   private:
     /**
     * Displays the device's ID code as a histogram on the provided MicroBitDisplay instance.
