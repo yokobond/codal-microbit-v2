@@ -55,11 +55,11 @@
             "url": "https://github.com/lancaster-university/codal-core"
         }, 
         {
-            "branch": "16edb84e43f5faeb64b93cb9cd0ee1c4260ae31b", 
-            "name": "codal-nrf52", 
-            "type": "git", 
-            "url": "https://github.com/lancaster-university/codal-nrf52"
-        }, 
+            "branch": "scratch-microbit-more",
+            "name": "codal-nrf52",
+            "type": "git",
+            "url": "https://github.com/yokobond/codal-nrf52"
+        },
         {
             "branch": "691869a8261e08b283deb0e2267fae3c00c17dae", 
             "name": "codal-microbit-nrf5sdk", 

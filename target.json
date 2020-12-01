@@ -62,8 +62,8 @@
         },
         {
             "name":"codal-nrf52",
-            "url":"https://github.com/lancaster-university/codal-nrf52",
-            "branch":"master",
+            "url":"https://github.com/yokobond/codal-nrf52",
+            "branch":"scratch-microbit-more",
             "type":"git"
         },
         {
